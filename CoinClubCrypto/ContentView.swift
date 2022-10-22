@@ -17,9 +17,7 @@ struct ContentView: View {
     @State var total:Int = 123456543
     @State var selectOmniDex:Bool = false
     
-    
-    
-    @State var backgroundColor:LinearGradient = LinearGradient(gradient: Gradient(colors: [Color.blue,Color.black]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    @State var backgroundColor:LinearGradient = LinearGradient(gradient: Gradient(colors: [Color.blue, Color("Prime1")]), startPoint: .topLeading, endPoint: .bottomTrailing)
     
     //MARK: Main App
     var body: some View {
@@ -50,6 +48,7 @@ struct ContentView: View {
                     .tag(2)
                 
             })
+            .accentColor(.green)
     }
     
     //MARK: Functions
@@ -72,6 +71,7 @@ struct ContentView: View {
                         .frame(width: .infinity, height: selectOmniDex ? 530:100)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
+                        .shadow(radius: 10)
                     
                     VStack {
                         Text("Token Exchange")
@@ -102,9 +102,68 @@ struct ContentView: View {
                                 .frame(width: .infinity, height: 100)
                                 .padding(.leading, 20)
                                 .padding(.trailing, 20)
+                                .shadow(radius: 10)
+                            
+                            HStack {
+                                VStack {
+                                    Circle()
+                                        .frame(width: 40)
+                                    .foregroundColor(.white)
+                                    
+                                    Text("XDC")
+                                        .foregroundColor(.white)
+                                }
+                                    
+                                
+                                VStack {
+                                    HStack {
+                                        Image(systemName: "circle.grid.3x3.circle")
+                                            .foregroundColor(.white)
+                                        
+                                        Spacer()
+                                        
+                                        Text("Test wallet \(index)")
+                                            .foregroundColor(.white)
+                                            .frame(width: .infinity, alignment: .center)
+                                            .font(.title2)
+                                            .bold()
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "paperplane.fill")
+                                            .foregroundColor(.white)
+                                    }
+                                    
+                                    HStack {
+                                        Spacer()
+                                        Text("xdc76f33784...e267a70f")
+                                            .background(Color.gray)
+                                            .cornerRadius(7)
+                                            .foregroundColor(.white)
+                                            .textSelection(.enabled)
+                                        
+                                        Image(systemName: "qrcode")
+                                            .foregroundColor(.white)
+                                    }
+                                    
+                                    Text("143,246")
+                                        .foregroundColor(.white)
+                                        .padding(.leading, 200)
+                                        .bold()
+                                    
+                                    Text("$15,245")
+                                        .foregroundColor(.white)
+                                        .padding(.leading, 200)
+                                }
+                                //.background(Color.green)
+                            }
+                            .padding(.leading, 35)
+                            .padding(.trailing, 35)
+                            
                         }
                     }
                 }
+                
                 ZStack{
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(Color.green)
