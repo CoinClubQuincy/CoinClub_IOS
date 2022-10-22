@@ -13,9 +13,10 @@ struct ContentView: View {
         "apple", "banna", "peach" ,"1","2","3","4","5","6","7"
     ]
     
-    @State var selectTab:Int = 0
-    @State var total:Int = 123456543
+    @State var selectTab:Int = 2
+    @State var total:Int = 12345
     @State var selectOmniDex:Bool = false
+    @State var searchContacts:String = ""
     
     @State var backgroundColor:LinearGradient = LinearGradient(gradient: Gradient(colors: [Color.blue, Color("Prime1")]), startPoint: .topLeading, endPoint: .bottomTrailing)
     
@@ -37,7 +38,7 @@ struct ContentView: View {
                 
                 ContactBook.tabItem{
                         Image(systemName: "book.fill")
-                        Text("Contact Book")
+                        Text("Contacts")
                     }
                     .tag(2)
                 
@@ -45,7 +46,7 @@ struct ContentView: View {
                         Image(systemName: "gear")
                         Text("Settings")
                     }
-                    .tag(2)
+                    .tag(3)
                 
             })
             .accentColor(.green)
@@ -63,33 +64,40 @@ struct ContentView: View {
                 .ignoresSafeArea(.all)
             VStack {
                 
-                Text("\(total)")
+                Text("$\(total)")
                     .foregroundColor(.white)
+                    .font(.largeTitle)
+                    .bold()
+                
                 ZStack{
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(Color.white)
-                        .frame(width: .infinity, height: selectOmniDex ? 530:100)
+                        .frame(width: .infinity, height: selectOmniDex ? 550:100)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         .shadow(radius: 10)
                     
-                    VStack {
-                        Text("Token Exchange")
-                            .frame(width: .infinity,height: 50)
-                            .bold()
-                            .font(.largeTitle)
+                    VStack (alignment: .center){
                         
                         Button(action: {
                             withAnimation(.default){
                                 selectOmniDex.toggle()
                             }
                         }, label: {
-                            Image(systemName: "rectangle.2.swap")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 30,height: 30)
+                            VStack {
+                                Image(systemName: "rectangle.2.swap")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30,height: 30, alignment: .center)
+                                    .padding(10)
+                            }
+                                .background(Color.black)
+                            if selectOmniDex{
+                                Spacer()
+                            }
                         })
                     }
+                   
                         
                 }
                 Spacer()
@@ -131,19 +139,19 @@ struct ContentView: View {
                                         Spacer()
                                         
                                         Image(systemName: "paperplane.fill")
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.blue)
                                     }
                                     
                                     HStack {
                                         Spacer()
                                         Text("xdc76f33784...e267a70f")
-                                            .background(Color.gray)
+                                            .background(Color.blue)
                                             .cornerRadius(7)
                                             .foregroundColor(.white)
                                             .textSelection(.enabled)
                                         
                                         Image(systemName: "qrcode")
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.blue)
                                     }
                                     
                                     Text("143,246")
@@ -175,6 +183,7 @@ struct ContentView: View {
                         .frame(width:selectOmniDex ?  50:0 , height: selectOmniDex ? 50:0, alignment: .trailing)
                         .padding(.bottom, selectOmniDex ? 60:0)
                         .padding(.trailing, selectOmniDex ? 250:0)
+                        .shadow(radius: 10)
                     
                 }
             }
@@ -190,21 +199,61 @@ struct ContentView: View {
     }
     
     var ContactBook: some View {
+        
+        NavigationView {
+            BookPage
+                .navigationTitle("My Contacts")
+                .navigationBarItems(trailing:
+                    Button (action: {
+ 
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                )
+        }
+    }
+    
+    
+    var BookPage: some View {
         ZStack {
             backgroundColor
                 .ignoresSafeArea(.all)
-            Text("ContactBook")
+            VStack {
+                TextField("Search...", text: $searchContacts)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+                
+                Spacer()
+                ScrollView{
+                    ForEach(0..<10){ index in
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: .infinity, height: 100, alignment: .center)
+                            .padding(.leading, 20)
+                            .padding(.trailing, 20)
+                    }
+                }
+                ZStack{
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundColor(Color.green)
+                        .frame(width: .infinity,height: 0)
+                        .padding(.leading, 20)
+                        .padding(.trailing, 20)
+                }
+            }
         }
+        
     }
+    
+    
+    
     
     var Settings: some View {
-        ZStack {
-            backgroundColor
-                .ignoresSafeArea(.all)
-            Text("Settings")
-        }
+            ZStack {
+                backgroundColor
+                    .ignoresSafeArea(.all)
+                Text("Settings")
+            }
     }
-    
 }
         //.padding()
 
