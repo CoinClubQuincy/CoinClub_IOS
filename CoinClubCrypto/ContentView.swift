@@ -71,7 +71,7 @@ struct ContentView: View {
                 
                 ZStack{
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.yellow)
                         .frame(width: .infinity, height: selectOmniDex ? 550:100)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
@@ -281,7 +281,6 @@ struct ContentView: View {
                         .frame(width: .infinity,height: 0)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
-                        .padding()
                 }
             }
         }
