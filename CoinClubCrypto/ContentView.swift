@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var fruit: [String] = [
-        "apple", "banna", "peach" ,"1","2","3","4","5","6","7"
+    @State var Coin: [String] = [
+        "XDC", "XRP", "XLM" ,"Algo","l","3","4","5","6","7"
     ]
     
     @State var selectTab:Int = 2
@@ -88,22 +88,43 @@ struct ContentView: View {
                                 Image(systemName: "rectangle.2.swap")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 30,height: 30, alignment: .center)
-                                    .padding(10)
+                                    .frame(width: 30,height: 30, alignment: .top)
+                                    .padding(.leading,selectOmniDex ?  30:0)
+                                    .padding()
+                                //.background(Color.black)
                             }
-                                .background(Color.black)
-                            if selectOmniDex{
-                                Spacer()
-                            }
+                            
+                            //.background(Color.black)
+                        if selectOmniDex{
+                            Spacer()
+                        }
                         })
-                    }
-                   
+                        if selectOmniDex{
+                            Spacer()
+                        }
                         
+                        if selectOmniDex{
+                            
+                            VStack {
+                                
+                                Image(systemName: "equal.circle")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30,height: 30, alignment: .top)
+                                    .padding(.leading,selectOmniDex ?  0:0)
+                                Text("XDC")
+                            }
+                                //.background(Color.black)
+                           
+                            
+                            
+                        }
+                    }
                 }
+                
                 Spacer()
                 
                 ScrollView {
-                    
                     ForEach(0..<7){index in
                         ZStack{
                             RoundedRectangle(cornerRadius: 10)
@@ -146,7 +167,7 @@ struct ContentView: View {
                                         Spacer()
                                         Text("xdc76f33784...e267a70f")
                                             .background(Color.blue)
-                                            .cornerRadius(7)
+                                            .cornerRadius(5)
                                             .foregroundColor(.white)
                                             .textSelection(.enabled)
                                         
@@ -179,17 +200,22 @@ struct ContentView: View {
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         .padding(.bottom, selectOmniDex ? 60:0)
-                    Circle()
-                        .frame(width:selectOmniDex ?  50:0 , height: selectOmniDex ? 50:0, alignment: .trailing)
-                        .padding(.bottom, selectOmniDex ? 60:0)
-                        .padding(.trailing, selectOmniDex ? 250:0)
-                        .shadow(radius: 10)
-                    
+                    HStack {
+                        Circle()
+                            .frame(width:selectOmniDex ?  50:0 , height: selectOmniDex ? 50:0, alignment: .trailing)
+                            .padding(.bottom, selectOmniDex ? 60:0)
+                            .padding(.leading, selectOmniDex ? 30:0)
+                            .shadow(radius: 10)
+                        
+                        Spacer()
+                                                    
+                    }
                 }
             }
         }
     }
     
+    //MARK: DApps
     var DApps: some View {
         ZStack {
             backgroundColor
@@ -198,6 +224,7 @@ struct ContentView: View {
         }
     }
     
+    //MARK: ContractBook
     var ContactBook: some View {
         
         NavigationView {
@@ -213,7 +240,7 @@ struct ContentView: View {
         }
     }
     
-    
+    //MARK: Bookpage
     var BookPage: some View {
         ZStack {
             backgroundColor
@@ -221,32 +248,46 @@ struct ContentView: View {
             VStack {
                 TextField("Search...", text: $searchContacts)
                     .textFieldStyle(.roundedBorder)
-                    .padding()
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
                 
                 Spacer()
                 ScrollView{
                     ForEach(0..<10){ index in
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: .infinity, height: 100, alignment: .center)
-                            .padding(.leading, 20)
-                            .padding(.trailing, 20)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: .infinity, height: 50, alignment: .center)
+                                .padding(.leading, 20)
+                                .padding(.trailing, 20)
+                            
+                            HStack {
+                                Text("S")
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 30)
+                                    .padding(.trailing, 30)
+                                Spacer()
+                                Image(systemName: "arrow.right")
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 30)
+                                    .padding(.trailing, 30)
+                            }
+                        }
                     }
                 }
+                
                 ZStack{
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(Color.green)
                         .frame(width: .infinity,height: 0)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
+                        .padding()
                 }
             }
         }
-        
     }
     
-    
-    
-    
+    //MARK: Settings
     var Settings: some View {
             ZStack {
                 backgroundColor
@@ -255,8 +296,8 @@ struct ContentView: View {
             }
     }
 }
-        //.padding()
 
+//MARK: Content View
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
