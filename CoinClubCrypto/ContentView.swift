@@ -17,6 +17,7 @@ struct ContentView: View {
     @State var total:Int = 12345
     @State var selectOmniDex:Bool = false
     @State var searchContacts:String = ""
+    @State var traderMode:Bool = false
     
     @State var backgroundColor:LinearGradient = LinearGradient(gradient: Gradient(colors: [Color.blue, Color("Prime1")]), startPoint: .topLeading, endPoint: .bottomTrailing)
     
@@ -71,14 +72,18 @@ struct ContentView: View {
                 
                 ZStack{
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color.orange)
+                        .foregroundColor(Color.white)
                         .frame(width: .infinity, height: selectOmniDex ? 550:100)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         .shadow(radius: 10)
                     
+                    Toggle("", isOn: $traderMode)
+                        .padding(.trailing,selectOmniDex ? 45:0)
+                        .padding(.bottom,selectOmniDex ? 470:0)
+                        .opacity(selectOmniDex ? 100:0)
+                    
                     VStack (alignment: .center){
-                        
                         Button(action: {
                             withAnimation(.default){
                                 selectOmniDex.toggle()
@@ -244,7 +249,7 @@ struct ContentView: View {
                 ZStack{
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(Color.green)
-                        .frame(width: .infinity, height: selectOmniDex ? 100:0)
+                        .frame(width: .infinity, height: selectOmniDex ? 110:0)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         .padding(.bottom, selectOmniDex ? 60:0)
@@ -273,6 +278,7 @@ struct ContentView: View {
                                 .padding(.bottom,selectOmniDex ? 55:0)
                                 .frame(width: 250, height: selectOmniDex ? 50:0)
                                 .opacity(selectOmniDex ? 100:0)
+                                .animation(.easeInOut)
                             }
                         }
                         Spacer()
