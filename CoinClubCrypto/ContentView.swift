@@ -19,6 +19,8 @@ struct ContentView: View {
     @State var searchContacts:String = ""
     @State var traderMode:Bool = false
     
+    @State var walletExpand: Bool = false
+    
     @State var backgroundColor:LinearGradient = LinearGradient(gradient: Gradient(colors: [Color.blue, Color("Prime1")]), startPoint: .topLeading, endPoint: .bottomTrailing)
     
     //MARK: Main App
@@ -34,7 +36,7 @@ struct ContentView: View {
                 DApps.tabItem{
                         Image(systemName: "applescript.fill")
                         Text("DApps")
-                    } 
+                    }
                     .tag(1)
                 
                 ContactBook.tabItem{
@@ -122,29 +124,36 @@ struct ContentView: View {
                 Spacer()
                 
                 ScrollView {
-                    ForEach(0..<7){index in
+                    ScrollViewReader { proxy in
+                    ForEach(0..<17){index in
                         ZStack{
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: .infinity, height: 100)
+                                .frame(width: .infinity, height: walletExpand ? 578:100)
                                 .padding(.leading, 20)
                                 .padding(.trailing, 20)
                                 .shadow(radius: 10)
-                            
                             HStack {
                                 VStack {
                                     Circle()
                                         .frame(width: 40)
-                                    .foregroundColor(.white)
+                                        .foregroundColor(.white)
+                                        .padding(.top,walletExpand ? 65:20)
                                     
                                     Text("XDC")
                                         .foregroundColor(.white)
+                                    Spacer()
                                 }
-                                    
-                                
                                 VStack {
                                     HStack {
-                                        Image(systemName: "circle.grid.3x3.circle")
-                                            .foregroundColor(.white)
+                                        Button(action: {
+                                            withAnimation(.spring()){
+                                                walletExpand.toggle()
+                                                proxy.scrollTo(index, anchor: .top)
+                                            }
+                                        }, label: {
+                                            Image(systemName: "circle.grid.3x3.circle")
+                                                .foregroundColor(.white)
+                                        })
                                         
                                         Spacer()
                                         
@@ -152,6 +161,7 @@ struct ContentView: View {
                                             .foregroundColor(.white)
                                             .frame(width: .infinity, alignment: .center)
                                             .font(.title2)
+                                            .padding(.top,5)
                                             .bold()
                                         
                                         Spacer()
@@ -159,6 +169,7 @@ struct ContentView: View {
                                         Image(systemName: "paperplane.fill")
                                             .foregroundColor(.blue)
                                     }
+                                    
                                     
                                     HStack {
                                         Spacer()
@@ -172,6 +183,8 @@ struct ContentView: View {
                                             .foregroundColor(.blue)
                                     }
                                     
+                                    Spacer()
+                                    
                                     Text("143,246")
                                         .foregroundColor(.white)
                                         .padding(.leading, 200)
@@ -180,13 +193,17 @@ struct ContentView: View {
                                     Text("$15,245")
                                         .foregroundColor(.white)
                                         .padding(.leading, 200)
+                                    
                                 }
+                                .padding(.bottom,5)
                                 //.background(Color.green)
                             }
                             .padding(.leading, 35)
                             .padding(.trailing, 35)
                             
                         }
+                        .id(index)
+                    }
                     }
                 }
                 
