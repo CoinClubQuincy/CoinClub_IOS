@@ -13,7 +13,7 @@ struct ContentView: View {
         "XDC", "XRP", "XLM" ,"Algo","l","3","4","5","6","7"
     ]
     
-    @State var selectTab:Int = 2
+    @State var selectTab:Int = 0
     @State var total:Int = 12345
     @State var selectOmniDex:Bool = false
     @State var searchContacts:String = ""
@@ -71,7 +71,7 @@ struct ContentView: View {
                 
                 ZStack{
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color.yellow)
+                        .foregroundColor(Color.orange)
                         .frame(width: .infinity, height: selectOmniDex ? 550:100)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
@@ -103,21 +103,68 @@ struct ContentView: View {
                             Spacer()
                         }
                         
+                        
+                        //MARK: Token Swap DApp
                         if selectOmniDex{
                             
                             VStack {
                                 
-                                Image(systemName: "equal.circle")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 30,height: 30, alignment: .top)
-                                    .padding(.leading,selectOmniDex ?  0:0)
-                                Text("XDC")
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .frame(width: 250, height: 70, alignment: .center)
+                                    VStack {
+                                        Text("XDC")
+                                            .foregroundColor(.white)
+                                        Text("amount")
+                                            .foregroundColor(.white)
+                                            .padding(.leading, 5)
+                                            .padding(.trailing, 5)
+                                            .background(Color.gray)
+                                            .cornerRadius(10)
+                                    }
+                                }
+                                
+                                Image(systemName: "arrow.triangle.swap")
+                                    .frame(width: .infinity, height: 20)
+                                    .padding(20)
+                                
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .frame(width: 250, height: 70, alignment: .center)
+                                    
+                                    HStack {
+                                        VStack {
+                                            Text("Token swapped")
+                                                .foregroundColor(.white)
+
+                                            Text("amount")
+                                                .foregroundColor(.white)
+                                                .padding(.leading, 5)
+                                                .padding(.trailing, 5)
+                                               
+                                                .background(Color.gray)
+                                                .cornerRadius(10)
+                                        }
+                                        
+                                        Image(systemName: "greaterthan.circle")
+                                            .frame(width: 30, alignment: .leading)
+                                            .foregroundColor(.white)
+                                    }
+                                }
+                                Spacer()
+                                
+                                ZStack{
+                                    Text("SWAP")
+                                        .frame(width: 150, height: 70, alignment: .center)
+                                        .foregroundColor(.blue)
+                                        .background(Color.black)
+                                        .cornerRadius(20)
+                                }
+                                Spacer()
+                                
+                                
+                                
                             }
-                                //.background(Color.black)
-                           
-                            
-                            
                         }
                     }
                 }
@@ -193,6 +240,7 @@ struct ContentView: View {
                     }
                 }
                 
+                //MARK: OmniDex Wallet Bar
                 ZStack{
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(Color.green)
@@ -201,13 +249,35 @@ struct ContentView: View {
                         .padding(.trailing, 20)
                         .padding(.bottom, selectOmniDex ? 60:0)
                     HStack {
-                        Circle()
-                            .frame(width:selectOmniDex ?  50:0 , height: selectOmniDex ? 50:0, alignment: .trailing)
-                            .padding(.bottom, selectOmniDex ? 60:0)
-                            .padding(.leading, selectOmniDex ? 30:0)
-                            .shadow(radius: 10)
+                        VStack {
+                            Circle()
+                                .frame(width:selectOmniDex ?  50:0 , height: selectOmniDex ? 50:0, alignment: .trailing)
+                            Text("XDC")
+                        }
+                        .padding(.bottom, selectOmniDex ? 55:0)
+                        .padding(.leading, selectOmniDex ? 30:0)
+                        .shadow(radius: 10)
+                        .opacity(selectOmniDex ? 100:0)
                         
+                        
+                        ZStack{
+                            VStack{
+                                RoundedRectangle(cornerRadius: 20)
+                                    .frame(width: 310, height: selectOmniDex ? 50:0)
+                                    .padding(.bottom,5)
+                                HStack {
+                                    Text("xdc76f33784...e267a70f")
+                                    Image(systemName: "equal.circle")
+                                    
+                                }
+                                .padding(.bottom,selectOmniDex ? 55:0)
+                                .frame(width: 250, height: selectOmniDex ? 50:0)
+                                .opacity(selectOmniDex ? 100:0)
+                            }
+                        }
                         Spacer()
+                        
+
                                                     
                     }
                 }
@@ -281,6 +351,7 @@ struct ContentView: View {
                         .frame(width: .infinity,height: 0)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
+  
                 }
             }
         }
