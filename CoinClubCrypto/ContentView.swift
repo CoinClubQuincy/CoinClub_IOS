@@ -9,11 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var Coin: [String] = [
+    var NativeCoins: [String] = [
         "XDC", "XRP", "XLM" ,"Algo","l","3","4","5","6","7"
     ]
     
-    @State var selectTab:Int = 0
+    var ABCs:[String] = [
+    "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
+    ]
+    
+    @State var selectTab:Int = 1
     @State var total:Int = 12345
     @State var selectOmniDex:Bool = false
     @State var searchContacts:String = ""
@@ -23,6 +27,7 @@ struct ContentView: View {
     @State var walletExpand: Bool = false
     
     @State var backgroundColor:LinearGradient = LinearGradient(gradient: Gradient(colors: [Color.blue, Color("Prime1")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    
     
     //MARK: Main App
     var body: some View {
@@ -285,48 +290,37 @@ struct ContentView: View {
     
     //MARK: Bookpage
     var BookPage: some View {
-        ZStack {
+        ZStack{
             backgroundColor
                 .ignoresSafeArea(.all)
+            
             VStack {
-                TextField("Search...", text: $searchContacts)
-                    .textFieldStyle(.roundedBorder)
-                    .padding(.leading, 20)
-                    .padding(.trailing, 20)
-                
-                Spacer()
-                ScrollView{
-                    ForEach(0..<10){ index in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: .infinity, height: 50, alignment: .center)
-                                .padding(.leading, 20)
-                                .padding(.trailing, 20)
-                            
-                            HStack {
-                                Text("S")
-                                    .foregroundColor(.white)
-                                    .padding(.leading, 30)
-                                    .padding(.trailing, 30)
-                                Spacer()
-                                Image(systemName: "arrow.right")
-                                    .foregroundColor(.white)
-                                    .padding(.leading, 30)
-                                    .padding(.trailing, 30)
-                            }
-                        }
+                TextField("Search...", text: $seachLedger)
+                    .frame(width: .infinity, height: 20)
+                    .padding(15)
+                    .foregroundColor(.white)
+                    .background(Color.gray)
+                    .cornerRadius(10)
+                    
+                    
+                List{
+                    Section("A"){
+                        Text("test")
+                        
+                        Text("test")
+                    }
+                    Section("B"){
+                        Text("test")
+                        Text("test")
+                        Text("test")
                     }
                 }
-                
-                ZStack{
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color.green)
-                        .frame(width: .infinity,height: 0)
-                        .padding(.leading, 20)
-                        .padding(.trailing, 20)
-  
-                }
+                .listStyle(GroupedListStyle())
+                .cornerRadius(10)
+
+                Spacer()
             }
+            .padding()
         }
     }
     
@@ -353,12 +347,25 @@ struct ContentView: View {
             VStack {
                 TextField("Search...", text: $seachLedger)
                     .frame(width: .infinity, height: 20)
-                    .padding(20)
+                    .padding(15)
                     .foregroundColor(.white)
                     .background(Color.gray)
                     .cornerRadius(10)
                     
                     
+                List{
+                    Section("Date"){
+                        Text("test")
+                        
+                        Text("test")
+                    }
+                    Text("test")
+                    Text("test")
+                    Text("test")
+                }
+                .listStyle(GroupedListStyle())
+                .cornerRadius(10)
+
                 Spacer()
             }
             .padding()
