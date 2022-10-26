@@ -33,23 +33,28 @@ struct ContentView: View {
                 }
                 .tag(0)
                 
-                DApps.tabItem{
-                        Image(systemName: "applescript.fill")
-                        Text("DApps")
+                Ledger.tabItem{
+                        Image(systemName: "list.bullet.rectangle.portrait")
+                        Text("Ledger")
                     }
                     .tag(1)
+                DApps.tabItem{
+                        Image(systemName: "doc.append.fill")
+                        Text("DApps")
+                    }
+                    .tag(2)
                 
                 ContactBook.tabItem{
                         Image(systemName: "book.fill")
                         Text("Contacts")
                     }
-                    .tag(2)
+                    .tag(3)
                 
                 Settings.tabItem{
                         Image(systemName: "gear")
                         Text("Settings")
                     }
-                    .tag(3)
+                    .tag(4)
                 
             })
             .accentColor(.green)
@@ -128,7 +133,7 @@ struct ContentView: View {
                     ForEach(0..<17){index in
                         ZStack{
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: .infinity, height: walletExpand ? 578:100)
+                                .frame(width: .infinity, height: walletExpand ? 580:100)
                                 .padding(.leading, 20)
                                 .padding(.trailing, 20)
                                 .shadow(radius: 10)
@@ -165,6 +170,7 @@ struct ContentView: View {
                                             .bold()
                                         
                                         Spacer()
+                                        Spacer()
                                         
                                         Image(systemName: "paperplane.fill")
                                             .foregroundColor(.blue)
@@ -173,7 +179,7 @@ struct ContentView: View {
                                     
                                     HStack {
                                         Spacer()
-                                        Text("xdc76f33784...e267a70f")
+                                        Text("xdc76f33784f9dcd73...bee267a70f")
                                             .background(Color.blue)
                                             .cornerRadius(5)
                                             .foregroundColor(.white)
@@ -183,16 +189,14 @@ struct ContentView: View {
                                             .foregroundColor(.blue)
                                     }
                                     
-                                    Spacer()
+                                   Spacer()
                                     
-                                    Text("143,246")
-                                        .foregroundColor(.white)
-                                        .padding(.leading, 200)
-                                        .bold()
                                     
                                     Text("$15,245")
                                         .foregroundColor(.white)
-                                        .padding(.leading, 200)
+                                        .padding(.leading,walletExpand ?  100:220)
+                                        .font(walletExpand ? .largeTitle:.title2)
+                                        .bold()
                                     
                                 }
                                 .padding(.bottom,5)
@@ -323,6 +327,15 @@ struct ContentView: View {
                 }
             }
         }
+    }
+    
+    //MARK: Ledger
+    var Ledger: some View {
+            ZStack {
+                backgroundColor
+                    .ignoresSafeArea(.all)
+                Text("Ledger")
+            }
     }
     
     //MARK: Settings
