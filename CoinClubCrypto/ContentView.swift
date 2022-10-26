@@ -17,6 +17,7 @@ struct ContentView: View {
     @State var total:Int = 12345
     @State var selectOmniDex:Bool = false
     @State var searchContacts:String = ""
+    @State var seachLedger:String = ""
     @State var traderMode:Bool = false
     
     @State var walletExpand: Bool = false
@@ -39,7 +40,7 @@ struct ContentView: View {
                     }
                     .tag(1)
                 DApps.tabItem{
-                        Image(systemName: "doc.append.fill")
+                        Image(systemName: "plus.app")
                         Text("DApps")
                     }
                     .tag(2)
@@ -57,7 +58,7 @@ struct ContentView: View {
                     .tag(4)
                 
             })
-            .accentColor(.green)
+            .accentColor(.accentColor)
     }
     
     //MARK: Functions
@@ -331,11 +332,37 @@ struct ContentView: View {
     
     //MARK: Ledger
     var Ledger: some View {
-            ZStack {
-                backgroundColor
-                    .ignoresSafeArea(.all)
-                Text("Ledger")
+        NavigationView {
+            LedgerView
+                .navigationTitle("Ledger History")
+                .navigationBarItems(trailing:
+                    Button (action: {
+ 
+                    }) {
+                        Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                    }
+                )
+        }
+    }
+    
+    var LedgerView: some View {
+        ZStack{
+            backgroundColor
+                .ignoresSafeArea(.all)
+            
+            VStack {
+                TextField("Search...", text: $seachLedger)
+                    .frame(width: .infinity, height: 20)
+                    .padding(20)
+                    .foregroundColor(.white)
+                    .background(Color.gray)
+                    .cornerRadius(10)
+                    
+                    
+                Spacer()
             }
+            .padding()
+        }
     }
     
     //MARK: Settings
