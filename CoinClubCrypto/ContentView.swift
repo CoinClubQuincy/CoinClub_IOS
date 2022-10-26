@@ -17,7 +17,7 @@ struct ContentView: View {
     "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
     ]
     
-    @State var selectTab:Int = 1
+    @State var selectTab:Int = 4
     @State var total:Int = 12345
     @State var selectOmniDex:Bool = false
     @State var searchContacts:String = ""
@@ -299,7 +299,7 @@ struct ContentView: View {
                     .frame(width: .infinity, height: 20)
                     .padding(15)
                     .foregroundColor(.white)
-                    .background(Color.gray)
+                    .background(Color.white)
                     .cornerRadius(10)
                     
                     
@@ -349,19 +349,21 @@ struct ContentView: View {
                     .frame(width: .infinity, height: 20)
                     .padding(15)
                     .foregroundColor(.white)
-                    .background(Color.gray)
+                    .background(Color.white)
                     .cornerRadius(10)
                     
                     
                 List{
-                    Section("Date"){
+                    Section("mm/dd/yyyy"){
                         Text("test")
                         
                         Text("test")
                     }
-                    Text("test")
-                    Text("test")
-                    Text("test")
+                    Section("mm/dd/yyyy"){
+                        Text("test")
+                        Text("test")
+                        Text("test")
+                    }
                 }
                 .listStyle(GroupedListStyle())
                 .cornerRadius(10)
@@ -377,7 +379,46 @@ struct ContentView: View {
             ZStack {
                 backgroundColor
                     .ignoresSafeArea(.all)
-                Text("Settings")
+                VStack {
+                    
+                    Toggle("TraderMode", isOn: $traderMode)
+                        .frame(width: .infinity)
+                        //.background(Color.white)
+                        .cornerRadius(20)
+                        .padding(.leading,20)
+                        .padding(.trailing,20)
+                    
+                    Toggle("FaceID", isOn: $traderMode)
+                        .frame(width: .infinity)
+                        //.background(Color.white)
+                        .cornerRadius(20)
+                        .padding(.leading,20)
+                        .padding(.trailing,20)
+                    
+                    Spacer()
+                    
+                    Toggle("Testnets", isOn: $traderMode)
+                        .frame(width: .infinity)
+                        //.background(Color.white)
+                        .cornerRadius(20)
+                        .padding(.leading,20)
+                        .padding(.trailing,20)
+                    
+                    
+                    Spacer()
+                    
+                    Text("Import Account")
+                        .frame(width: .infinity, height: 40, alignment: .center)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(5)
+                    
+                    Text("Export Account")
+                        .frame(width: .infinity, height: 40, alignment: .center)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(5)
+                }
             }
     }
 }
