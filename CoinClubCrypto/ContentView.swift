@@ -7,17 +7,32 @@
 
 import SwiftUI
 
+
+struct Token: Identifiable {
+    let id = UUID().uuidString
+    let network: String
+    let token: String
+    var amount:Int
+}
+
+struct Send: Identifiable {
+    let id = UUID().uuidString
+    let self_address: String
+    let send_address: String
+    let amount:Int
+    let Token:String
+    let includeFee:Bool
+}
+
 struct ContentView: View {
     
     var NativeCoins: [String] = [
         "XDC", "XRP", "XLM" ,"Algo","l","3","4","5","6","7"
     ]
     
-    var ABCs:[String] = [
-    "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
-    ]
+    var ABCs:[String] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
-    @State var selectTab:Int = 4
+    @State var selectTab:Int = 0
     @State var total:Int = 12345
     @State var selectOmniDex:Bool = false
     @State var searchContacts:String = ""
@@ -25,6 +40,14 @@ struct ContentView: View {
     @State var traderMode:Bool = false
     
     @State var walletExpand: Bool = false
+    @State var showSendScreen:Bool = false
+    
+    @State var sendScreen: Send = Send(
+        self_address: "0x0000000000000000000000000000000000000000",
+        send_address: "0x0000000000000000000000000000000000000000",
+        amount: 0,
+        Token: "N/A",
+        includeFee: false)
     
     @State var backgroundColor:LinearGradient = LinearGradient(gradient: Gradient(colors: [Color.blue, Color("Prime1")]), startPoint: .topLeading, endPoint: .bottomTrailing)
     
@@ -178,8 +201,25 @@ struct ContentView: View {
                                         Spacer()
                                         Spacer()
                                         
-                                        Image(systemName: "paperplane.fill")
-                                            .foregroundColor(.blue)
+                                        Button(action: {
+                                            showSendScreen.toggle()
+                                            sendScreen = Send(
+                                                self_address: "",
+                                                send_address: "",
+                                                amount: index,
+                                                Token: "",
+                                                includeFee: false)
+
+                                        }) {
+                                            Image(systemName: "paperplane.fill")
+                                                .foregroundColor(.blue)
+                                        }
+                                        .sheet(isPresented: $showSendScreen, content: {
+                                            SendScreen(sendCrypto: $sendScreen)
+                                        })
+
+                                        
+                                        
                                     }
                                     
                                     
@@ -366,7 +406,7 @@ struct ContentView: View {
                     }
                 }
                 .listStyle(GroupedListStyle())
-                .cornerRadius(10)
+                .cornerRadius(10) 
 
                 Spacer()
             }
@@ -510,6 +550,19 @@ struct SWAP: View {
             .padding(.leading,30)
             .padding(.bottom,10)
         }
+    }
+}
+
+
+struct SendScreen: View {
+    
+    @Binding var sendCrypto: Send
+    
+    var body: some View{
+        Text(sendCrypto.Token)
+        Text(sendCrypto.self_address)
+        Text(sendCrypto.send_address)
+        Text("\(sendCrypto.amount)")
     }
 }
 
