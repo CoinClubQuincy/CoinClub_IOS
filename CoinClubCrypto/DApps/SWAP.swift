@@ -11,7 +11,6 @@ import SwiftUI
 struct SWAP: View {
     var body: some View {
         VStack {
-            
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width: 250, height: 70, alignment: .center)
@@ -35,7 +34,6 @@ struct SWAP: View {
             Image(systemName: "arrow.triangle.swap")
                 .frame(width: .infinity, height: 20)
                 .padding(20)
-            
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width: 250, height: 70, alignment: .center)
@@ -74,14 +72,10 @@ struct SWAP: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 70, height: 40, alignment: .center)
-                        
                         Text("DEX")
                             .foregroundColor(.white)
                     }
-                    
                 }
-
-                
             }
             Spacer()
             

@@ -21,17 +21,14 @@ struct Contacts: View {
  
                     }) {
                         Image(systemName: "plus")
-                    }
-                )
+                    })
         }
     }
-    
     //MARK: Bookpage
     var BookPage: some View {
-        ZStack{
+        ZStack {
             backgroundColor
                 .ignoresSafeArea(.all)
-            
             VStack {
                 TextField("Search...", text: $searchLedger)
                     .frame(width: .infinity, height: 20)
@@ -39,8 +36,6 @@ struct Contacts: View {
                     .foregroundColor(.white)
                     .background(Color.white)
                     .cornerRadius(10)
-                    
-                    
                 List{
                     Section("A"){
                         Text("test")

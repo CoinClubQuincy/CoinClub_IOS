@@ -17,7 +17,6 @@ struct Settings: View {
                 backgroundColor
                     .ignoresSafeArea(.all)
                 VStack {
-                    
                     Toggle("TraderMode", isOn: $traderMode)
                         .frame(width: .infinity)
                         //.background(Color.white)
@@ -40,8 +39,7 @@ struct Settings: View {
                         .cornerRadius(20)
                         .padding(.leading,20)
                         .padding(.trailing,20)
-                    
-                    
+        
                     Spacer()
                     
                     Text("Import Account")

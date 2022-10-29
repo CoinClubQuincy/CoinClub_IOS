@@ -34,11 +34,10 @@ struct ContentView: View {
     
     @State var backgroundColor:LinearGradient = LinearGradient(gradient: Gradient(colors: [Color.blue, Color("Prime1")]), startPoint: .topLeading, endPoint: .bottomTrailing)
     
-    
     //MARK: Main App
     var body: some View {
-        
             TabView(selection: $selectTab, content: {
+                //MARK: Wallets
                 Wallets(
                     backgroundColor: $backgroundColor,
                     total: $total,
@@ -49,38 +48,32 @@ struct ContentView: View {
                     showSendScreen: $showSendScreen)
                     .tabItem{
                     Image(systemName: "house.fill")
-                    Text("Wallet")
-                }
-                .tag(0)
-                
+                    Text("Wallet")}
+                    .tag(0)
+                //MARK: Ledger
                 Ledger(backgroundColor: $backgroundColor, searchLedger: $searchLedger)
                     .tabItem{
                         Image(systemName: "list.bullet.rectangle.portrait")
-                        Text("Ledger")
-                    }
-                    .tag(1)
-                
+                        Text("Ledger")}
+                        .tag(1)
+                //MARK: DAppStore
                 DAppStore(backgroundColor: $backgroundColor)
                     .tabItem{
                         Image(systemName: "plus.app")
-                        Text("DApps")
-                    }
-                    .tag(2)
-                
+                        Text("DApps")}
+                        .tag(2)
+                //MARK: Contacts
                 Contacts(backgroundColor: $backgroundColor, searchLedger: $searchLedger)
                     .tabItem{
                         Image(systemName: "book.fill")
-                        Text("Contacts")
-                    }
-                    .tag(3)
-                
+                        Text("Contacts")}
+                        .tag(3)
                 //MARK: Settings
                 Settings(traderMode: $traderMode, backgroundColor: $backgroundColor)
                     .tabItem{
                         Image(systemName: "gear")
-                        Text("Settings")
-                    }
-                    .tag(4)
+                        Text("Settings")}
+                        .tag(4)
             })
             .accentColor(.accentColor)
     }

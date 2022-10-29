@@ -21,8 +21,7 @@ struct Ledger: View {
  
                     }) {
                         Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                    }
-                )
+                    })
         }
     }
     var LedgerView: some View {
@@ -37,7 +36,6 @@ struct Ledger: View {
                     .foregroundColor(.white)
                     .background(Color.white)
                     .cornerRadius(10)
-                    
                     
                 List{
                     Section("mm/dd/yyyy"){

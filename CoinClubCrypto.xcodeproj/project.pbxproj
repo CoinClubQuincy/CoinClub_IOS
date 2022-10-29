@@ -15,6 +15,7 @@
 		6662673C290CB4D200FECA26 /* Ledger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662673B290CB4D200FECA26 /* Ledger.swift */; };
 		6662673E290CB56B00FECA26 /* DAppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662673D290CB56B00FECA26 /* DAppStore.swift */; };
 		66626740290CB5ED00FECA26 /* Wallets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662673F290CB5ED00FECA26 /* Wallets.swift */; };
+		66626742290CF0E200FECA26 /* OmniBarWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66626741290CF0E200FECA26 /* OmniBarWallet.swift */; };
 		D35D365929037FFC0045B942 /* CoinClubCryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35D365829037FFC0045B942 /* CoinClubCryptoApp.swift */; };
 		D35D365D29037FFF0045B942 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35D365C29037FFF0045B942 /* Assets.xcassets */; };
 		D35D366129037FFF0045B942 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35D366029037FFF0045B942 /* Preview Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		6662673B290CB4D200FECA26 /* Ledger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledger.swift; sourceTree = "<group>"; };
 		6662673D290CB56B00FECA26 /* DAppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAppStore.swift; sourceTree = "<group>"; };
 		6662673F290CB5ED00FECA26 /* Wallets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallets.swift; sourceTree = "<group>"; };
+		66626741290CF0E200FECA26 /* OmniBarWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniBarWallet.swift; sourceTree = "<group>"; };
 		D35D365529037FFC0045B942 /* CoinClubCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinClubCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35D365829037FFC0045B942 /* CoinClubCryptoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinClubCryptoApp.swift; sourceTree = "<group>"; };
 		D35D365C29037FFF0045B942 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			children = (
 				664714EF290BA23200B097B2 /* SendScreen.swift */,
 				6662673F290CB5ED00FECA26 /* Wallets.swift */,
+				66626741290CF0E200FECA26 /* OmniBarWallet.swift */,
 			);
 			path = Wallets;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				6662673C290CB4D200FECA26 /* Ledger.swift in Sources */,
 				664714F2290BA30D00B097B2 /* ContentView.swift in Sources */,
 				66626738290CA3DF00FECA26 /* Settings.swift in Sources */,
+				66626742290CF0E200FECA26 /* OmniBarWallet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
