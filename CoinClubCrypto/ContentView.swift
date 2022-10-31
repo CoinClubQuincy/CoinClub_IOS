@@ -9,12 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var NativeCoins: [String] = [
-        "XDC", "XRP", "XLM" ,"Algo","l","3","4","5","6","7"
-    ]
-    
-    var ABCs:[String] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-    
     @State var selectTab:Int = 0
     @State var total:Int = 12345
     @State var selectOmniDex:Bool = false

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Contacts_" representedClassName="Contacts_" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wallets_"/>
+    </entity>
+    <entity name="DApps_" representedClassName="DApps_" syncable="YES" codeGenerationType="class">
+        <attribute name="ciml" optional="YES" attributeType="String"/>
+        <attribute name="descriprion" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Settings_" representedClassName="Settings_" syncable="YES" codeGenerationType="class"/>
+    <entity name="Wallets_" representedClassName="Wallets_" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="network" optional="YES" attributeType="String"/>
+        <attribute name="token" optional="YES" attributeType="String"/>
+        <attribute name="watchOnly" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+</model>
