@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C7C7339F-3ED2-4528-96A3-FD2CB8E11E8F"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoinClubCrypto/ContentView.swift"
@@ -24,7 +24,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CF06C817-2D28-44C0-99E1-B1A11224F61C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoinClubCrypto/ContentView.swift"
@@ -32,6 +32,115 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E4D059B-DD9B-4CBA-82B8-3DAE37DDDDE1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinClubCrypto/Wallets/Wallets.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "Wallets"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "4E4D059B-DD9B-4CBA-82B8-3DAE37DDDDE1 - d21658a48c36296d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinClubCrypto.Wallets.backgroundColor.getter : SwiftUI.LinearGradient"
+                  moduleName = "CoinClubCrypto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/quincyj/Desktop/Swift/CoinClubCrypto/CoinClubCrypto_IOS/CoinClubCrypto/Wallets/Wallets.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  uuid = "4E4D059B-DD9B-4CBA-82B8-3DAE37DDDDE1 - 20d42e040e775c61"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinClubCrypto.Wallets.backgroundColor.setter : SwiftUI.LinearGradient"
+                  moduleName = "CoinClubCrypto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/quincyj/Desktop/Swift/CoinClubCrypto/CoinClubCrypto_IOS/CoinClubCrypto/Wallets/Wallets.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  uuid = "4E4D059B-DD9B-4CBA-82B8-3DAE37DDDDE1 - e300125192f76650"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinClubCrypto.Wallets.backgroundColor.modify : SwiftUI.LinearGradient"
+                  moduleName = "CoinClubCrypto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/quincyj/Desktop/Swift/CoinClubCrypto/CoinClubCrypto_IOS/CoinClubCrypto/Wallets/Wallets.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "4E4D059B-DD9B-4CBA-82B8-3DAE37DDDDE1 - 96c976ce662a45fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinClubCrypto.Wallets.backgroundColor.modify : SwiftUI.LinearGradient with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "CoinClubCrypto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/quincyj/Desktop/Swift/CoinClubCrypto/CoinClubCrypto_IOS/CoinClubCrypto/Wallets/Wallets.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "4E4D059B-DD9B-4CBA-82B8-3DAE37DDDDE1 - 82f7c7c1fac1f229"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoinClubCrypto.Wallets.$backgroundColor.getter : SwiftUI.Binding&lt;SwiftUI.LinearGradient&gt;"
+                  moduleName = "CoinClubCrypto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/quincyj/Desktop/Swift/CoinClubCrypto/CoinClubCrypto_IOS/CoinClubCrypto/Wallets/Wallets.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "260">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "907B1065-BDC7-44B5-9002-984B9FF1EEC5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoinClubCrypto/Wallets/Wallets.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

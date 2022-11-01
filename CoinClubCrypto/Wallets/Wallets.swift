@@ -123,7 +123,10 @@ struct Wallets: View {
                                                 .foregroundColor(.blue)
                                         }
                                         .sheet(isPresented: $showSendScreen, content: {
-                                            SendScreen(sendCrypto: $sendScreen)
+                                            
+                                            SendScreen(
+                                                backgroundColor: $backgroundColor,
+                                                sendCrypto: $sendScreen)
                                         })
                                     }
  

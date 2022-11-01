@@ -19,10 +19,10 @@ struct Contacts: View {
     @Binding var searchLedger:String
     @State var selfName:String = "Self"
     
-    @State  var AddName:String = "contact Name"
-    @State  var AddAddress:String = "contact Address"
-    @State  var AddNet:String = "contact Network"
-    @State  var AddToken:String = "contact Token"
+    @State  var AddName:String = ""
+    @State  var AddAddress:String = ""
+    @State  var AddNet:String = ""
+    @State  var AddToken:String = ""
 
     var body: some View {
         NavigationView {
@@ -81,14 +81,9 @@ struct Contacts: View {
             backgroundColor
                 .ignoresSafeArea(.all)
             VStack {
-                Circle()
-                    .frame(
-                        height: 100,
-                        alignment: .trailing)
-                    .padding(.trailing,290)
                 TextField("Name", text: $AddName)
                     .padding()
-                    .background(Color.black)
+                    .background(Color.white)
                     .cornerRadius(20)
                     .foregroundColor(.blue)
                     .font(.headline)
@@ -96,7 +91,7 @@ struct Contacts: View {
                     .padding(.horizontal)
                 TextField("Address", text: $AddAddress)
                     .padding()
-                    .background(Color.black)
+                    .background(Color.white)
                     .cornerRadius(20)
                     .foregroundColor(.blue)
                     .font(.headline)
@@ -104,7 +99,7 @@ struct Contacts: View {
                     .padding(.horizontal)
                 TextField("Network", text: $AddNet)
                     .padding()
-                    .background(Color.black)
+                    .background(Color.white)
                     .cornerRadius(20)
                     .foregroundColor(.blue)
                     .font(.headline)
@@ -112,15 +107,7 @@ struct Contacts: View {
                     .padding(.horizontal)
                 TextField("Token", text: $AddToken)
                     .padding()
-                    .background(Color.black)
-                    .cornerRadius(20)
-                    .foregroundColor(.blue)
-                    .font(.headline)
-                    .bold()
-                    .padding(.horizontal)
-                TextField("Name'''", text: $AddName)
-                    .padding()
-                    .background(Color.black)
+                    .background(Color.white)
                     .cornerRadius(20)
                     .foregroundColor(.blue)
                     .font(.headline)
