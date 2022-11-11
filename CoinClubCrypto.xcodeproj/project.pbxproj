@@ -21,6 +21,7 @@
 		D35D365929037FFC0045B942 /* CoinClubCryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35D365829037FFC0045B942 /* CoinClubCryptoApp.swift */; };
 		D35D365D29037FFF0045B942 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35D365C29037FFF0045B942 /* Assets.xcassets */; };
 		D35D366129037FFF0045B942 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35D366029037FFF0045B942 /* Preview Assets.xcassets */; };
+		D3A057B329170026008E700D /* CIML_Compiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A057B229170026008E700D /* CIML_Compiler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		D35D365C29037FFF0045B942 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D35D365E29037FFF0045B942 /* CoinClubCrypto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoinClubCrypto.entitlements; sourceTree = "<group>"; };
 		D35D366029037FFF0045B942 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D3A057B229170026008E700D /* CIML_Compiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIML_Compiler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				664714F3290BA43B00B097B2 /* SWAP.swift */,
+				D3A057B229170026008E700D /* CIML_Compiler.swift */,
 				6662673D290CB56B00FECA26 /* DAppStore.swift */,
 			);
 			path = DApps;
@@ -222,6 +225,7 @@
 				6662673A290CB3B700FECA26 /* Contacts.swift in Sources */,
 				D35D365929037FFC0045B942 /* CoinClubCryptoApp.swift in Sources */,
 				6662673E290CB56B00FECA26 /* DAppStore.swift in Sources */,
+				D3A057B329170026008E700D /* CIML_Compiler.swift in Sources */,
 				66626740290CB5ED00FECA26 /* Wallets.swift in Sources */,
 				6662673C290CB4D200FECA26 /* Ledger.swift in Sources */,
 				66FB6423291052C9004B2E0A /* Wallet_Contacts.swift in Sources */,
