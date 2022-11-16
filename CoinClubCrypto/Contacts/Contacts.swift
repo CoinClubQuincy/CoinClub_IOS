@@ -23,6 +23,7 @@ struct Contacts: View {
     @State  var AddAddress:String = ""
     @State  var AddNet:String = ""
     @State  var AddToken:String = ""
+    @State var totalAddys:Int = 1
 
     var body: some View {
         NavigationView {
@@ -31,7 +32,9 @@ struct Contacts: View {
                 .navigationBarItems(
                     leading:
                         NavigationLink(
-                            destination: viewSelf,
+                            destination: viewSelf
+                                        .navigationTitle("My Wallets")
+                            ,
                             label: {
                                 Image(systemName: "person.fill")
                             })
@@ -97,22 +100,42 @@ struct Contacts: View {
                     .font(.headline)
                     .bold()
                     .padding(.horizontal)
-                TextField("Network", text: $AddNet)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(20)
-                    .foregroundColor(.blue)
-                    .font(.headline)
-                    .bold()
-                    .padding(.horizontal)
-                TextField("Token", text: $AddToken)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(20)
-                    .foregroundColor(.blue)
-                    .font(.headline)
-                    .bold()
-                    .padding(.horizontal)
+                VStack {
+                    ForEach(0..<totalAddys){ index in
+                    HStack{
+                            TextField("Network", text: $AddNet)
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(20)
+                                .foregroundColor(.blue)
+                                .font(.headline)
+                                .bold()
+                                .padding(.horizontal)
+                            
+                            Image(systemName: "circle.fill")
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(50)
+                                .foregroundColor(.blue)
+                                .font(.headline)
+                                .bold()
+                                .padding(.horizontal)
+                        }
+                    }
+                }
+                ZStack {
+                    Button(action: {
+                        totalAddys = totalAddys + 1
+                    }, label: {
+                        Image(systemName: "circle.fill")
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(50)
+                            .font(.headline)
+                            .padding(.horizontal)
+                    })
+
+                }
                 Spacer()
                 
                 Text("Add Contact")
@@ -133,8 +156,29 @@ struct Contacts: View {
             backgroundColor
                 .ignoresSafeArea(.all)
             VStack {
-                Text("Self info")
+                TextField("Search...", text: $searchLedger)
+                    .frame(width: .infinity, height: 20)
+                    .padding(15)
+                    .foregroundColor(.white)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    
+                List{
+                    Section("XDC"){
+                        Text("0x0000...0000")
+                    }
+                    Section("XRP"){
+                        Text("test")
+                        Text("test")
+                        Text("test")
+                    }
+                }
+                .listStyle(GroupedListStyle())
+                .cornerRadius(10)
+
+                Spacer()
             }
+            .padding()
         }
     }
 }

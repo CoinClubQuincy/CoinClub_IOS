@@ -88,6 +88,7 @@ struct SendScreen: View {
                 .frame(height: 10)
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .background(Color.gray)
+                .cornerRadius(40)
                 .padding(.horizontal)
             
             
