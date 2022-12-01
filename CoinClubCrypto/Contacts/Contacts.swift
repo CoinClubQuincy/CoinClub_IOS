@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Contacts: View {
     var NativeCoins: [String] = [
-        "XDC", "XRP", "XLM" ,"ALGO","ETH"
+        "XDC", "XRP", "XLM","ETH"
     ]
     
     var ABCs:[String] = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
@@ -21,10 +21,9 @@ struct Contacts: View {
     
     @State  var AddName:String = ""
     @State  var AddAddress:String = ""
-    @State  var AddNet:String = ""
+    
     @State  var AddToken:String = ""
-    @State var totalAddys:Int = 1
-
+    
     var body: some View {
         NavigationView {
             contactBook
@@ -33,7 +32,7 @@ struct Contacts: View {
                     leading:
                         NavigationLink(
                             destination: viewSelf
-                                        .navigationTitle("My Wallets")
+                                .navigationTitle("My Wallets")
                             ,
                             label: {
                                 Image(systemName: "person.fill")
@@ -44,7 +43,7 @@ struct Contacts: View {
                             label: {
                                 Image(systemName: "plus")
                             })
-        )}
+                )}
     }
     //MARK: Bookpage
     var contactBook: some View {
@@ -71,7 +70,7 @@ struct Contacts: View {
                 }
                 .listStyle(GroupedListStyle())
                 .cornerRadius(10)
-
+                
                 Spacer()
             }
             .padding()
@@ -100,32 +99,12 @@ struct Contacts: View {
                     .font(.headline)
                     .bold()
                     .padding(.horizontal)
-                VStack {
-                    ForEach(0..<totalAddys){ index in
-                    HStack{
-                            TextField("Network", text: $AddNet)
-                                .padding()
-                                .background(Color.white)
-                                .cornerRadius(20)
-                                .foregroundColor(.blue)
-                                .font(.headline)
-                                .bold()
-                                .padding(.horizontal)
-                            
-                            Image(systemName: "circle.fill")
-                                .padding()
-                                .background(Color.white)
-                                .cornerRadius(50)
-                                .foregroundColor(.blue)
-                                .font(.headline)
-                                .bold()
-                                .padding(.horizontal)
-                        }
-                    }
-                }
+                
+                //add networks
+                
                 ZStack {
                     Button(action: {
-                        totalAddys = totalAddys + 1
+                        
                     }, label: {
                         Image(systemName: "circle.fill")
                             .padding()
@@ -134,7 +113,7 @@ struct Contacts: View {
                             .font(.headline)
                             .padding(.horizontal)
                     })
-
+                    
                 }
                 Spacer()
                 
@@ -162,7 +141,7 @@ struct Contacts: View {
                     .foregroundColor(.white)
                     .background(Color.white)
                     .cornerRadius(10)
-                    
+                
                 List{
                     Section("XDC"){
                         Text("0x0000...0000")
@@ -175,10 +154,40 @@ struct Contacts: View {
                 }
                 .listStyle(GroupedListStyle())
                 .cornerRadius(10)
-
+                
                 Spacer()
             }
             .padding()
+        }
+    }
+    
+    struct addNetwork: View {
+        //@State var addToken:[AnyView] = []
+        @State  var AddNet:[String] = [""]
+        var body: some View {
+            VStack {
+
+                HStack{
+                    TextField("Network", text: $AddNet[0])
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(20)
+                        .foregroundColor(.blue)
+                        .font(.headline)
+                        .bold()
+                        .padding(.horizontal)
+                    
+                    Image(systemName: "circle.fill")
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(50)
+                        .foregroundColor(.blue)
+                        .font(.headline)
+                        .bold()
+                        .padding(.horizontal)
+                    }
+                
+            }
         }
     }
 }

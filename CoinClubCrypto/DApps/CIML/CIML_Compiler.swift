@@ -32,7 +32,23 @@ struct CIML_View: View{
 struct CIML_Objects: View {
     @State var All_CIML_TOKENS:[CIML_Lexer] = []
     @State var vm = CIML_Parser(CIML_OBJECT: "Text").objects
-    let mainView:[CIML_Lexer] = []
+    //var mainView:[Any] = []
+    
+    let objects = Objects(
+        type: "Text",
+        text: "ciml text",
+        textFeild: "enter here",
+        foreGroundColor: .black,
+        font: .headline,
+        frame: [100,50],
+        frameBackGroundColor: .red,
+        tokenBackGroundColor: .white,
+        cornerRadius: 10,
+        bold: false,
+        fontWeight: .regular,
+        shadow: 10)
+    
+    //var test: View = []
     
     var body: some View {
         ZStack {
@@ -41,14 +57,10 @@ struct CIML_Objects: View {
                 .frame(maxWidth: .infinity)
                 .foregroundColor(vm.frameBackGroundColor)
             VStack {
-                ForEach(mainView){ index in
-                    index.Object
-                }
-                IMAGE
-                TEXT_FIELD
-                SPACER
-                TEXT
-                BUTTON
+//                ForEach(mainView){ index in
+//                    index.Object
+//                }
+                
             }
         }
         .frame(height: 700)

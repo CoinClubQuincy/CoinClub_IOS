@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22A400" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Contacts_" representedClassName="Contacts_" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wallets_" inverseName="contact" inverseEntity="Wallets_"/>
     </entity>
     <entity name="DApps_" representedClassName="DApps_" syncable="YES" codeGenerationType="class">
         <attribute name="ciml" optional="YES" attributeType="String"/>
         <attribute name="descriprion" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="Settings_" representedClassName="Settings_" syncable="YES" codeGenerationType="class"/>
     <entity name="Wallets_" representedClassName="Wallets_" syncable="YES" codeGenerationType="class">
@@ -17,6 +19,5 @@
         <attribute name="network" optional="YES" attributeType="String"/>
         <attribute name="token" optional="YES" attributeType="String"/>
         <attribute name="watchOnly" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contacts_" inverseName="relationship" inverseEntity="Contacts_"/>
     </entity>
 </model>

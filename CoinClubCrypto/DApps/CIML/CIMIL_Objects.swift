@@ -44,14 +44,9 @@ struct Function_Model:Identifiable {
     let type:String
     var value:[String]
 }
-struct Object_Model:Identifiable {
+struct Objects: Identifiable {
     let id: String = UUID().uuidString
-    let objName:String
     let type:String
-    var value:[String]
-}
-struct ObjectAtributes: Identifiable {
-    let id: String = UUID().uuidString
     var text: String
     var textFeild: String
     var foreGroundColor: Color
@@ -73,9 +68,10 @@ struct CIML_Lexer: Identifiable {
 class CIML_Parser: ObservableObject {
     @Published var variable_Tokens:[Variable_Model] = []
     @Published var function_Tokens:[Function_Model] = []
-    @Published var object_Tokens:[Object_Model] = []
+    @Published var object_Tokens:[Objects] = []
     
-    let objects = ObjectAtributes(
+    let objects = Objects(
+        type: "Text",
         text: "ciml text",
         textFeild: "enter here",
         foreGroundColor: .black,
