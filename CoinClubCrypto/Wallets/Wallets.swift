@@ -50,6 +50,7 @@ struct Wallets: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 30,height: 30, alignment: .top)
+                                    .foregroundColor(.black)
                                     .padding(.leading,selectOmniDex ?  30:0)
                                     .padding()
                                 //.background(Color.black)

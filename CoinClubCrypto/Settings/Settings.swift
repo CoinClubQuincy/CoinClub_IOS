@@ -104,14 +104,22 @@ struct Settings: View {
             .navigationBarItems(
                 trailing:
                     NavigationLink(
-                        destination: Text("Test")
+                        destination: settingsPage
                             .navigationTitle("More Settings")
                         ,
                         label: {
                             Image(systemName: "gear")
-                                .foregroundColor(.black)
+                                .foregroundColor(.white)
                         })
             )}
+    }
+    
+    var settingsPage: some View{
+        ZStack{
+            backgroundColor
+                .ignoresSafeArea(.all)
+            Text("Settings Page")
+        }
     }
 }
 

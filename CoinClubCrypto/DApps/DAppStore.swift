@@ -11,46 +11,158 @@ struct DAppStore: View {
     @Binding var backgroundColor:LinearGradient
     @State var searchBar:String = ""
     
+    let data = Array(1...60).map { "DApp Name \($0)" }
+    let layout = [
+        GridItem(.adaptive(minimum: 80))
+    ]
+    
     var body: some View {
-        ZStack {
-            backgroundColor
-                .ignoresSafeArea(.all)
-            VStack {
-                HStack {
-                    TextField("Search...", text: $searchBar)
-                        .frame(height: 50)
-                        .background(Color(.gray))
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .padding(.leading)
-                        .shadow(radius: 6)
-                    
-                    Image(systemName: "qrcode")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40,height: 40, alignment: .center)
-                        .padding(.trailing,10)
-                        
-                }
-                
-                
-                HStack {
-                    
-                    Button(action: {}, label: {
-                        Image("storeLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 70, height: 70)
+        
+        NavigationView {
+            ZStack {
+                backgroundColor
+                    .ignoresSafeArea(.all)
+                    .navigationTitle("DApps")
+                    .navigationBarItems(
+                        leading:
+                            Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                            .foregroundColor(.white)
+                        ,trailing:
+                            NavigationLink(
+                                destination: Text("Favorites")
+                                .navigationTitle("Favorites")
+                                ,label: {
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(.yellow)
+                                })
+                    )
+                VStack {
+                    HStack {
+                        TextField("Search...", text: $searchBar)
+                            .frame(height: 50)
+                            .padding(.leading)
+                            .background(Color(.white))
+                            .foregroundColor(.white)
                             .cornerRadius(10)
-                            .shadow(radius: 10)
-                    })
+                            .padding(.leading)
+                            .shadow(radius: 6)
+                        
+                        
+                        Button(action: {
+                            
+                        }, label: {
+                            Image("CIML_Logo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 55,height: 55, alignment: .center)
+                                .cornerRadius(10)
+                                .padding(.trailing,10)
+                        })
+                    }
+                    ScrollView {
+                        LazyVGrid(columns: layout, spacing: 20){
+                            ForEach(data, id: \.self){item in
+                                VStack {
+                                    Button(action: {}, label: {
+                                        Image("storeLogo")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 60, height: 60)
+                                            .cornerRadius(10)
+                                            .shadow(radius: 10)
+                                            .padding(5)
+                                    })
+                                    Text(item)
+                                        .font(.footnote)
+                                }
+                            }
+                        }
+                        .padding(.top)
+                    }
+                    
+                    
+                    
+                    /*
+                    HStack {
+                        VStack {
+                            Button(action: {}, label: {
+                                Image("storeLogo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 10)
+                                    .padding(5)
+                            })
+                            Text("DApp Store")
+                                .font(.footnote)
+                        }
+                        VStack {
+                            Button(action: {}, label: {
+                                Image("storeLogo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 10)
+                                    .padding(5)
+                            })
+                            Text("DApp Store")
+                                .font(.footnote)
+                        }
+                        
+                        VStack {
+                            Button(action: {}, label: {
+                                Image("storeLogo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 10)
+                                    .padding(5)
+                            })
+                            Text("DApp Store")
+                                .font(.footnote)
+                        }
+                        
+                        VStack {
+                            Button(action: {}, label: {
+                                Image("storeLogo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 10)
+                                    .padding(5)
+                            })
+                            Text("DApp Store")
+                                .font(.footnote)
+                        }
+                        
+                        VStack {
+                            Button(action: {}, label: {
+                                Image("storeLogo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 10)
+                                    .padding(5)
+                            })
+                            Text("DApp Store")
+                                .font(.footnote)
+                        }
+                        
+                        
+                        Spacer()
+                    }
+                    .padding()
+                    */
                     Spacer()
                 }
-                .padding()
-                
-                Spacer()
+                .padding(.top)
+                .padding(.horizontal)
             }
-            .padding(.top)
         }
     }
 }

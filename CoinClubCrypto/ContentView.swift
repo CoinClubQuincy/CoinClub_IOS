@@ -7,7 +7,57 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    
+    @State var name: String = ""
+
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(entity: Contacts_.entity(), sortDescriptors: [])
+     var products: FetchedResults<Contacts_>
+    
+    
+    func addContact() {
+        withAnimation {
+            let newItem = Contacts_(context: viewContext)
+            newItem.name = "Q"
+
+            do {
+                try viewContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("An error occured: \(error)")
+        }
+    }
+
+//    private func deleteItems(offsets: IndexSet) {
+//        withAnimation {
+//            offsets.map { Contacts_[$0] }.forEach(viewContext.delete)
+//
+//            do {
+//                try viewContext.save()
+//            } catch {
+//                // Replace this implementation with code to handle the error appropriately.
+//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//                let nsError = error as NSError
+//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//            }
+//        }
+//    }
+    
     
     @State var selectTab:Int = 2
     @State var total:Int = 12345
@@ -53,11 +103,11 @@ struct ContentView: View {
                 //MARK: DAppStore
                 DAppStore(backgroundColor: $backgroundColor)
                     .tabItem{
-                        Image(systemName: "plus.app")
+                        Image(systemName: "qrcode")
                         Text("DApps")}
                         .tag(2)
                 //MARK: Contacts
-                Contacts(backgroundColor: $backgroundColor, searchLedger: $searchLedger)
+                Contacts(backgroundColor: $backgroundColor, searchLedger: $searchLedger, products: products)
                     .tabItem{
                         Image(systemName: "book.fill")
                         Text("Contacts")}
@@ -65,11 +115,11 @@ struct ContentView: View {
                 //MARK: Settings
                 Settings(traderMode: $traderMode, backgroundColor: $backgroundColor)
                     .tabItem{
-                        Image(systemName: "gear")
+                        Image(systemName: "gearshape.circle")
                         Text("Settings")}
                         .tag(4)
             })
-            .accentColor(.accentColor)
+            .accentColor(.white)
     }
 }
 //MARK: Content View

@@ -44,21 +44,47 @@ struct Function_Model:Identifiable {
     let type:String
     var value:[String]
 }
-struct Objects: Identifiable {
+struct CIMLText: Identifiable {
     let id: String = UUID().uuidString
-    let type:String
-    var text: String
-    var textFeild: String
-    var foreGroundColor: Color
-    var font: Font
-    var frame: [CGFloat]
-    var frameBackGroundColor: Color
-    var tokenBackGroundColor: Color
-    var cornerRadius: CGFloat
-    var bold: Bool
-    var fontWeight: Font.Weight
-    var shadow: CGFloat
+    var text:String
+    var foreGroundColor:Color = .black
+    var font:Font = .headline
+    var frame:[CGFloat] = [100,50]
+    var alignment:Alignment = .center
+    var backgroundColor:Color = .clear
+    var cornerRadius:CGFloat = 0.0
+    var bold:Bool = false
+    var fontWeight:Font.Weight = .regular
+    var shadow:CGFloat = 0.0
+    var padding:CGFloat = 20
+    var location:[Int]
 }
+struct CIMLTextField: Identifiable {
+    let id: String = UUID().uuidString
+    var text:String
+    var textField:String = ""
+    var foreGroundColor:Color = .black
+    var frame:[CGFloat] = [300,60]
+    var alignment:Edge.Set = .horizontal
+    var backgroundColor:Color = .white
+    var cornerRadius:CGFloat = 10
+    var shadow:CGFloat = 10
+    var padding:CGFloat = 20
+ 
+}
+struct CIMLSYSImage: Identifiable {
+    let id: String = UUID().uuidString
+    var name:String
+    var frame:[CGFloat] = [50]
+    var padding:CGFloat = 20
+  
+}
+struct CIMLButton: Identifiable {
+    let id: String = UUID().uuidString
+    var label:AnyView
+    var type:String
+}
+
 
 struct CIML_Lexer: Identifiable {
     let id: String = UUID().uuidString
@@ -68,21 +94,10 @@ struct CIML_Lexer: Identifiable {
 class CIML_Parser: ObservableObject {
     @Published var variable_Tokens:[Variable_Model] = []
     @Published var function_Tokens:[Function_Model] = []
-    @Published var object_Tokens:[Objects] = []
-    
-    let objects = Objects(
-        type: "Text",
-        text: "ciml text",
-        textFeild: "enter here",
-        foreGroundColor: .black,
-        font: .headline,
-        frame: [100,50],
-        frameBackGroundColor: .red,
-        tokenBackGroundColor: .white,
-        cornerRadius: 10,
-        bold: false,
-        fontWeight: .regular,
-        shadow: 10)
+    @Published var Text_Tokens:[CIMLText] = []
+    @Published var TextField_Tokens:[CIMLTextField] = []
+    @Published var SysImage_Tokens:[CIMLSYSImage] = []
+    @Published var Button_Tokens:[CIMLButton] = []
     
     init(CIML_OBJECT: String){}
     
@@ -94,11 +109,5 @@ class CIML_Parser: ObservableObject {
     func View_Object_Viewer(){}
 }
 
-struct CIML_Text: View {
-    @State var vm = CIML_Parser(CIML_OBJECT: "Text").objects
-    var body: some View {
-     Text("text")
-    }
-}
 
 
