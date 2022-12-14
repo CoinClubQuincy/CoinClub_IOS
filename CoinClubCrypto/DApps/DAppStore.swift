@@ -62,19 +62,42 @@ struct DAppStore: View {
                     ScrollView {
                         LazyVGrid(columns: layout, spacing: 20){
                             ForEach(data, id: \.self){item in
-                                VStack {
-                                    Button(action: {}, label: {
-                                        Image("storeLogo")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 60, height: 60)
-                                            .cornerRadius(10)
-                                            .shadow(radius: 10)
-                                            .padding(5)
-                                    })
-                                    Text(item)
-                                        .font(.footnote)
-                                }
+                                    VStack {
+                                        Button(action: {}, label: {
+                                            Image("storeLogo")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 60, height: 60)
+                                                .cornerRadius(10)
+                                                .shadow(radius: 10)
+                                                .padding(5)
+                                        })
+                                        Text(item)
+                                            .font(.footnote)
+                                    }
+                                    .overlay(
+                                        Circle()
+                                            .fill(Color.red)
+                                            .frame(width: 20,height: 20)
+                                            .overlay(
+                                                Text("2")
+                                                    .font(.footnote)
+                                                    .foregroundColor(.white)
+                                            )
+                                        , alignment: .topLeading
+                                    )
+//                                    .overlay(// check isverifired == true
+//                                        Circle()
+//                                            .fill(Color.green)
+//                                            .frame(width: 20,height: 20)
+//                                            .overlay(
+//                                                Image(systemName: "checkmark.shield.fill")
+//                                                    .font(.footnote)
+//                                                    .foregroundColor(.white)
+//                                            )
+//                                        , alignment: .topTrailing
+//                                    )
+
                             }
                         }
                         .padding(.top)

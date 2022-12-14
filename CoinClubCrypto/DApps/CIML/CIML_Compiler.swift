@@ -9,83 +9,102 @@ import SwiftUI
 import Foundation
 
 
-struct CIML_View: View{
-    
-    @State var background: Color = .red
-    let mainView:[AnyView] = []
-    
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(height: 700)
-                .frame(maxWidth: .infinity)
-                .foregroundColor(background)
-            VStack {
-            }
-        }
-        .frame(height: 700)
-        .frame(maxWidth: .infinity)
-        .padding()
-    }
-}
 
-struct CIML_Objects: View {
-    @State var All_CIML_TOKENS:[CIML_Lexer] = []
-    
-    let data = Array(1...119).map { "\($0)" }
+struct CIMLFinalView: View {
+    let data = Array(1...126).map { "\($0)" }
     let layout = [
-        GridItem(.adaptive(minimum: 50))
+        GridItem(.adaptive(minimum: 30))
     ]
     
-    let text = CIMLText(
-        text: "ciml text",
-        location: [0,0,0])
-    
-    let textField = CIMLTextField(text: "Enter in info")
-    
-    let sysImage = CIMLSYSImage(name: "gear")
-    
-    //var button = CIMLButton(label: <#T##AnyView#>, type: "toggle")
-    
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 5)
                 .frame(height: 700)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(.red)
+                .foregroundColor(.yellow)
+            
             VStack {
                 LazyVGrid(columns: layout, spacing: 20){
                     ForEach(data, id: \.self){item in
-                        VStack {
-                            Button(action: {}, label: {
-                                Rectangle()
-                                    .frame(width: 20,height: 20)
-                            })
-                        }
+                            Rectangle()
+                                .frame(width: 30,height: 30)
+                                .foregroundColor(.black)
+                                .overlay{
+                                    Text("\(item)")
+                                        .foregroundColor(.white)
+                                }
+                        
+                                .overlay{
+                                    Overlay(cordinates: Int(item)!)
+                                }
+
                     }
                 }
+                .padding()
             }
         }
         .frame(height: 750)
         .frame(maxWidth: .infinity)
         .padding(10)
+        .overlay{
+            
         }
     }
+}
+
+
+struct Overlay: View{
+    var finalTextList:[TEXT] = []
+    var finalTextFieldList:[TEXT_FIELD] = []
+    var finalButtonList:[BUTTON] = []
+    var finalsysImageList:[SYSIMAGE] = []
+    var cordinates:Int
+    
+    var body: some View{
+        ZStack {
+            object
+        }
+    }
+    
+    var object: some View{
+        Circle()
+            .fill(Color.blue)
+            .frame(width: 35,height: 35)
+            .overlay(
+                Text("2")
+                    .font(.headline)
+                    .foregroundColor(.white)
+            )
+            .overlay(cordinates = 1 ? object : nil)
+        
+    }
+    
+    func buildObjects(){
+        
+        
+        
+    }
+    
+    mutating func buildText(text:String,foreGroundColor:Color,font:Font,frame:[CGFloat],alignment:Alignment,backgroundColor:Color,cornerRadius:CGFloat,bold:Bool,fontWeight:Font.Weight,shadow:CGFloat,padding:CGFloat,location:Int){
+        
+        finalTextList.append( TEXT(text: text, foreGroundColor: foreGroundColor, font: font, frame: frame, alignment: alignment, backgroundColor: backgroundColor, cornerRadius: cornerRadius, bold: bold, fontWeight: fontWeight, shadow: shadow, padding: padding,location: location))
+    }
+}
 
 struct TEXT: View {
-    private var text:String
-    private var foreGroundColor:Color
-    private var font:Font
-    private var frame:[CGFloat]
-    private var alignment:Alignment
-    private var backgroundColor:Color
-    private var cornerRadius:CGFloat
-    private var bold:Bool
-    private var fontWeight:Font.Weight
-    private var shadow:CGFloat
-    private var padding:CGFloat = 20
-    
-    
+    var text:String
+    var foreGroundColor:Color
+    var font:Font
+    var frame:[CGFloat]
+    var alignment:Alignment
+    var backgroundColor:Color
+    var cornerRadius:CGFloat
+    var bold:Bool
+    var fontWeight:Font.Weight
+    var shadow:CGFloat
+    var padding:CGFloat
+    var location:Int
+
     var body: some View {
         Text(text)
             .foregroundColor(foreGroundColor)
@@ -155,14 +174,8 @@ struct BUTTON:View{
 }
 
 
-struct CIML_Compiler: View {
-    var body: some View {
-        CIML_Objects()
-    }
-}
-
 struct CIML_Compiler_Previews: PreviewProvider {
     static var previews: some View {
-        CIML_Compiler()
+        CIMLFinalView()
     }
 }

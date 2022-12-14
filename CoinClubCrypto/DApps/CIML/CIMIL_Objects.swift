@@ -40,9 +40,10 @@ struct Variable_Model:Identifiable {
 }
 struct Function_Model:Identifiable {
     let id: String = UUID().uuidString
-    let varName:String
+    let funcName:String
     let type:String
-    var value:[String]
+    var inputValue:[String]
+    var outputValue:[String]
 }
 struct CIMLText: Identifiable {
     let id: String = UUID().uuidString
@@ -57,7 +58,7 @@ struct CIMLText: Identifiable {
     var fontWeight:Font.Weight = .regular
     var shadow:CGFloat = 0.0
     var padding:CGFloat = 20
-    var location:[Int]
+    var location:Int
 }
 struct CIMLTextField: Identifiable {
     let id: String = UUID().uuidString
