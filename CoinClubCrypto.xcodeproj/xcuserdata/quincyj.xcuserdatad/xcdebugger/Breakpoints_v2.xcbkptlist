@@ -161,7 +161,7 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "7B538D58-6547-4DA3-822A-B9AC38FD13D7 - 129c8ee41ad37073"
+                  uuid = "7B538D58-6547-4DA3-822A-B9AC38FD13D7 - 129c8ee41ad377e5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -171,12 +171,12 @@
                   urlString = "file:///Users/quincyj/Desktop/Swift/CoinClubCrypto/CoinClubCrypto_IOS/CoinClubCrypto/ContentView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "1836">
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "2020">
                </Location>
                <Location
-                  uuid = "7B538D58-6547-4DA3-822A-B9AC38FD13D7 - f734cff30b74a772"
+                  uuid = "7B538D58-6547-4DA3-822A-B9AC38FD13D7 - f734cff30b74a0e4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -186,8 +186,8 @@
                   urlString = "file:///Users/quincyj/Desktop/Swift/CoinClubCrypto/CoinClubCrypto_IOS/CoinClubCrypto/ContentView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
                   offsetFromSymbolStart = "112">
                </Location>
             </Locations>

@@ -14,7 +14,7 @@ struct CoinClubCryptoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CIMLFinalView()
                 .environment(\.managedObjectContext,
                              persistenceController.container.viewContext)
         }

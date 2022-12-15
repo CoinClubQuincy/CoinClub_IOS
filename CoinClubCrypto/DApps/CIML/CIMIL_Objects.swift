@@ -64,20 +64,21 @@ struct CIMLTextField: Identifiable {
     let id: String = UUID().uuidString
     var text:String
     var textField:String = ""
-    var foreGroundColor:Color = .black
+    var foreGroundColor:Color = .gray
     var frame:[CGFloat] = [300,60]
     var alignment:Edge.Set = .horizontal
     var backgroundColor:Color = .white
     var cornerRadius:CGFloat = 10
     var shadow:CGFloat = 10
     var padding:CGFloat = 20
- 
+    var location:Int
 }
 struct CIMLSYSImage: Identifiable {
     let id: String = UUID().uuidString
     var name:String
     var frame:[CGFloat] = [50]
     var padding:CGFloat = 20
+    var location:Int
   
 }
 struct CIMLButton: Identifiable {
