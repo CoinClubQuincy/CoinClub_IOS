@@ -84,9 +84,20 @@ struct CIMLSYSImage: Identifiable {
 }
 struct CIMLButton: Identifiable {
     let id: String = UUID().uuidString
-    var label:AnyView
-    var type:String
+    var text:String
+    var isIcon:Bool = false
+    var foreGroundColor:Color = .black
+    var font:Font = .headline
+    var frame:[CGFloat] = [100,50]
+    var alignment:Alignment = .center
+    var backgroundColor:Color = .clear
+    var cornerRadius:CGFloat = 10.0
+    var bold:Bool = false
+    var fontWeight:Font.Weight = .regular
+    var shadow:CGFloat = 0.0
+    var padding:CGFloat = 20
     var location:Int
+
 }
 
 struct CIML_Lexer: Identifiable {

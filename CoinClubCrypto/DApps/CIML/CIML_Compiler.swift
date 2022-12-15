@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 
-
+//MARK: Final View
 struct CIMLFinalView: View {
     @State var gridStatus:Bool = false
     @State var gridPlotView:Color = .black
@@ -73,7 +73,7 @@ struct CIMLFinalView: View {
     
 }
 
-
+//MARK: OverLay View
 struct Overlay: View{
     @State var finalTextList:[CIMLText] = []
     @State var finalTextFieldList:[CIMLTextField] = []
@@ -104,14 +104,21 @@ struct Overlay: View{
                     SYSIMAGE(sysname: list.name, frame: list.frame, padding: list.padding, color: .black, location: list.location)
                 }
             }
+            ForEach(finalButtonList){ list in
+                if cordinates == list.location {
+                    BUTTONS(text: list.text, isIcon: list.isIcon, foreGroundColor: list.foreGroundColor, font: list.font,
+                            frame: list.frame, alignment: list.alignment, backgroundColor: list.backgroundColor,
+                            cornerRadius: list.cornerRadius, bold: list.bold, fontWeight: list.fontWeight,
+                            shadow: list.shadow, padding: list.padding, location: list.location)
+                }
+            }
         }
-
         .onAppear {
             finalTextList.append(CIMLText(text: "Exit",font: .title, location: 126))
             finalTextList.append(CIMLText(text: "This is a Test Form",font: .largeTitle,frame: [300,50], location: 5))
-            finalTextList.append(CIMLText(text: "Enter", location: 50))
-            finalTextFieldList.append(CIMLTextField(text: "enter text",textField: "enter name...",foreGroundColor: .black, location: 32))
+            finalTextFieldList.append(CIMLTextField(text: "enter text",textField: "",foreGroundColor: .black, location: 32))
             finalsysImageList.append(CIMLSYSImage(name: "gear",padding: 0, location: 90))
+            finalButtonList.append(CIMLButton(text: "gear",isIcon: true,font: .title, backgroundColor: .clear, location: 50))
             
             print("total finalTextList: ",finalTextList.count)
             print("total TextField: ",finalTextFieldList.count)
@@ -119,25 +126,6 @@ struct Overlay: View{
             print("total finalButtonList: ",finalButtonList.count)
         }
     }
-    
-//    var objects: some View {
-////            ForEach(finalButtonList){ list in
-////                BUTTONS(label: <#T##AnyView#>, type: <#T##String#>)
-////            }
-////            ForEach(finalsysImageList){ list in
-////
-////            }
-    ///
-//        }
-
-//        Circle()
-//            .fill(Color.blue)
-//            .frame(width: 35,height: 35)
-//            .overlay(
-//                Text("X")
-//                    .font(.headline)
-//                    .foregroundColor(.white)
-//            )
         func buildObjects(){}
     
         mutating func buildText(text:String,foreGroundColor:Color,font:Font,frame:[CGFloat],alignment:Alignment,backgroundColor:Color,cornerRadius:CGFloat,bold:Bool,fontWeight:Font.Weight,shadow:CGFloat,padding:CGFloat,location:Int){
@@ -145,7 +133,7 @@ struct Overlay: View{
         finalTextList.append( CIMLText(text: text, foreGroundColor: foreGroundColor, font: font, frame: frame, alignment: alignment, backgroundColor: backgroundColor, cornerRadius: cornerRadius, bold: bold, fontWeight: fontWeight, shadow: shadow, padding: padding,location: location))
     }
 }
-
+//MARK: TEXT View
 struct TEXT: View {
     let id: String = UUID().uuidString
     var text:String
@@ -174,6 +162,7 @@ struct TEXT: View {
             .padding(padding)
     }
 }
+//MARK: TEXTFIELD View
 struct TEXT_FIELD:View{
     var text:String
     @State var textField:String
@@ -198,6 +187,7 @@ struct TEXT_FIELD:View{
         
     }
 }
+//MARK: SYSIMAGE View
 struct SYSIMAGE:View{
     var sysname:String
     var frame:[CGFloat]
@@ -214,26 +204,56 @@ struct SYSIMAGE:View{
             .padding(padding)
         }
 }
-
+//MARK: BUTTUNS View
 struct BUTTONS:View{
-    
-    var label:AnyView
-    var type:String
+    var text:String
+    var isIcon:Bool
+    var foreGroundColor:Color
+    var font:Font
+    var frame:[CGFloat]
+    var alignment:Alignment
+    var backgroundColor:Color
+    var cornerRadius:CGFloat
+    var bold:Bool
+    var fontWeight:Font.Weight
+    var shadow:CGFloat
+    var padding:CGFloat
     var location:Int
+   //@State var finalButtonLabelList:[CIMLText]
     
     var body: some View {
-        Button(action: {
-            //Types:
-            //Toggle Button
-            //Submit Function
-            //Segue
-        }, label: {
-            label
-        })
+        ZStack {
+            Button(action: {
+                //Types:
+                //Toggle Button
+                //Submit Function
+                //Segue
+            }, label: {
+                if(isIcon){
+                    Image(systemName: text)
+                        .foregroundColor(foreGroundColor)
+                        .frame(width: frame[0], height: frame[1], alignment: alignment)
+                        .background(backgroundColor)
+                        .shadow(radius: shadow)
+                        .padding(padding)
+                } else{
+                    Text(text)
+                        .foregroundColor(foreGroundColor)
+                        .font(font)
+                        .frame(width: frame[0], height: frame[1], alignment: alignment)
+                        .background(backgroundColor)
+                        .cornerRadius(cornerRadius)
+                        .bold(bold)
+                        .fontWeight(fontWeight)
+                        .shadow(radius: shadow)
+                        .padding(padding)
+                }
+            })
+        }
     }
 }
 
-
+//MARK: PreView
 struct CIML_Compiler_Previews: PreviewProvider {
     static var previews: some View {
         CIMLFinalView()
