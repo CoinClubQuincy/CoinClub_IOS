@@ -78,6 +78,7 @@ struct CIMLSYSImage: Identifiable {
     var name:String
     var frame:[CGFloat] = [50]
     var padding:CGFloat = 20
+    var color:Color = .black
     var location:Int
   
 }
@@ -85,31 +86,14 @@ struct CIMLButton: Identifiable {
     let id: String = UUID().uuidString
     var label:AnyView
     var type:String
+    var location:Int
 }
-
 
 struct CIML_Lexer: Identifiable {
     let id: String = UUID().uuidString
     var Object: AnyView
 }
 
-class CIML_Parser: ObservableObject {
-    @Published var variable_Tokens:[Variable_Model] = []
-    @Published var function_Tokens:[Function_Model] = []
-    @Published var Text_Tokens:[CIMLText] = []
-    @Published var TextField_Tokens:[CIMLTextField] = []
-    @Published var SysImage_Tokens:[CIMLSYSImage] = []
-    @Published var Button_Tokens:[CIMLButton] = []
-    
-    init(CIML_OBJECT: String){}
-    
-    func Parser(token_object:String){}
-    func Text(){}
-    func TextField(){}
-    func Image(type:String,url:String){}
-    func Button(actions:String,label:String){}
-    func View_Object_Viewer(){}
-}
 
 
 

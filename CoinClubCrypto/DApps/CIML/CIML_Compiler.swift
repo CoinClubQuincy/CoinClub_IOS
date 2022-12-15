@@ -42,7 +42,6 @@ struct CIMLFinalView: View {
                                     Text("\(item)")
                                         .foregroundColor(gridNumberView)
                                 }
-                            
                         }
                         .overlay{
                             Overlay(cordinates: Int(item)!)
@@ -81,9 +80,7 @@ struct Overlay: View{
     @State var finalButtonList:[CIMLButton] = []
     @State var finalsysImageList:[CIMLSYSImage] = []
     var cordinates:Int
-
     
-
     var body: some View{
         ZStack {
             ForEach(finalTextList) { list in
@@ -97,24 +94,25 @@ struct Overlay: View{
             
             ForEach(finalTextFieldList){ list in
                 if cordinates == list.location {
-                    TEXT_FIELD(text: list.text, foreGroundColor: list.foreGroundColor, frame: list.frame,
+                    TEXT_FIELD(text: list.text, textField: list.textField, foreGroundColor: list.foreGroundColor, frame: list.frame,
                             alignment: list.alignment, backgroundColor: list.backgroundColor,
-                            cornerRadius: list.cornerRadius, shadow: list.shadow, location: list.location)
+                               cornerRadius: list.cornerRadius, shadow: list.shadow,padding: list.padding ,location: list.location)
                 }
             }
             ForEach(finalsysImageList){ list in
                 if cordinates == list.location {
-                    SYSIMAGE(sysname: list.name, frame: list.frame, location: list.location)
+                    SYSIMAGE(sysname: list.name, frame: list.frame, padding: list.padding, color: .black, location: list.location)
                 }
             }
         }
 
         .onAppear {
-            finalTextList.append(CIMLText(text: "test",font: .title, location: 126))
-            finalTextList.append(CIMLText(text: "test", location: 1))
-            finalTextList.append(CIMLText(text: "test", location: 50))
-            finalTextFieldList.append(CIMLTextField(text: "enter text",textField: "new", location: 10))
-            finalsysImageList.append(CIMLSYSImage(name: "gear", location: 20))
+            finalTextList.append(CIMLText(text: "Exit",font: .title, location: 126))
+            finalTextList.append(CIMLText(text: "This is a Test Form",font: .largeTitle,frame: [300,50], location: 5))
+            finalTextList.append(CIMLText(text: "Enter", location: 50))
+            finalTextFieldList.append(CIMLTextField(text: "enter text",textField: "enter name...",foreGroundColor: .black, location: 32))
+            finalsysImageList.append(CIMLSYSImage(name: "gear",padding: 0, location: 90))
+            
             print("total finalTextList: ",finalTextList.count)
             print("total TextField: ",finalTextFieldList.count)
             print("total finalsysImageList: ",finalsysImageList.count)
@@ -178,19 +176,19 @@ struct TEXT: View {
 }
 struct TEXT_FIELD:View{
     var text:String
-    @State var textField:String = ""
+    @State var textField:String
     var foreGroundColor:Color
     var frame:[CGFloat]
     var alignment:Edge.Set
     var backgroundColor:Color
     var cornerRadius:CGFloat
     var shadow:CGFloat
-    var padding:CGFloat = 20
+    var padding:CGFloat
     var location:Int
  
     var body: some View {
         TextField(text, text: $textField)
-            .frame(maxWidth: frame[0])
+            .frame(width: frame[0])
             .frame(height: frame[1])
             .foregroundColor(foreGroundColor)
             .background(backgroundColor)
@@ -203,24 +201,26 @@ struct TEXT_FIELD:View{
 struct SYSIMAGE:View{
     var sysname:String
     var frame:[CGFloat]
-    var padding:CGFloat = 20
+    var padding:CGFloat
+    var color:Color
     var location:Int
     
     var body: some View {
-        ZStack {
-            Image(systemName: sysname)
-                .resizable()
-                .scaledToFit()
+        Image(systemName: sysname)
+            .resizable()
+            .scaledToFit()
+            .foregroundColor(color)
+            .frame(width: frame[0])
+            .padding(padding)
         }
-        .frame(width: frame[0])
-        .padding(padding)
-    }
 }
 
 struct BUTTONS:View{
     
     var label:AnyView
     var type:String
+    var location:Int
+    
     var body: some View {
         Button(action: {
             //Types:
