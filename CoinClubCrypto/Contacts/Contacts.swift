@@ -107,6 +107,7 @@ struct Contacts: View {
                     }
                     .listStyle(GroupedListStyle())
                     .cornerRadius(10)
+                    .listStyle(PlainListStyle())
                     
                     Spacer()
                 }

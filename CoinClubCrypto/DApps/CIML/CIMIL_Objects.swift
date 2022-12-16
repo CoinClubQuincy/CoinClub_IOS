@@ -7,28 +7,51 @@
 
 import SwiftUI
 import Foundation
-
+import Combine
 // This file was generated from JSON Schema using quicktype, do not modify it directly.To parse the JSON, add this file to your project and do:   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
-// MARK: - Welcome
-struct Welcome: Codable {
-    let cimlVersion, contractLanguage, name, symbol: String
-    let logo, thumbnail, contractOrigin: String
-    let variables, functions, objects, views: [String]
-    let metadata: [String]
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
 
-    enum CodingKeys: String, CodingKey {
-        case cimlVersion = "CIML_Version"
-        case contractLanguage = "Contract_Language"
-        case name = "Name"
-        case symbol = "Symbol"
-        case logo
-        case thumbnail = "Thumbnail"
-        case contractOrigin = "ContractOrigin"
-        case variables = "Variables"
-        case functions = "Functions"
-        case objects = "Objects"
-        case views = "Views"
-        case metadata = "Metadata"
+
+// MARK: - CIML
+struct CIML: Codable,Identifiable {
+        let id: String = UUID().uuidString
+        let cimlVersion, appVersion, contractLanguage, name: String?
+        let symbol, logo, thumbnail, description: String?
+        let contractOrigin: String?
+        let screenShots, variables, functions, objects: [String]?
+        let views, metadata: [String]?
+}
+
+class DownloadCIMLDocument: ObservableObject {
+    @Published var ciml: [CIML] = []
+    
+    var cancellables = Set<AnyCancellable>()
+    init(){
+        getCIML()
+    }
+    func getCIML(){
+        guard let url = URL(string: "https://test-youtube-engine-xxxx.s3.amazonaws.com/CIML/Example.json") else { return }
+
+        URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .tryMap{ (data,response) -> JSONDecoder.Input in
+
+                guard let response = response as? HTTPURLResponse,response.statusCode >= 200 && response.statusCode < 300 else {
+                    throw URLError(.badServerResponse)
+                }
+                return data
+            }
+            .decode(type: [CIML].self, decoder: JSONDecoder())
+            .sink { (completion) in
+                print("Completion: \(completion)")
+            } receiveValue: { [weak self] (returnedCIML) in
+                self?.ciml = returnedCIML
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -90,14 +113,13 @@ struct CIMLButton: Identifiable {
     var font:Font = .headline
     var frame:[CGFloat] = [100,50]
     var alignment:Alignment = .center
-    var backgroundColor:Color = .clear
+    var backgroundColor:Color = .blue
     var cornerRadius:CGFloat = 10.0
     var bold:Bool = false
     var fontWeight:Font.Weight = .regular
-    var shadow:CGFloat = 0.0
+    var shadow:CGFloat = 10.0
     var padding:CGFloat = 20
     var location:Int
-
 }
 
 struct CIML_Lexer: Identifiable {

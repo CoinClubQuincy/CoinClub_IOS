@@ -50,6 +50,7 @@ struct Ledger: View {
                     }
                 }
                 .listStyle(GroupedListStyle())
+                //.listStyle(PlainListStyle())
                 .cornerRadius(10)
 
                 Spacer()

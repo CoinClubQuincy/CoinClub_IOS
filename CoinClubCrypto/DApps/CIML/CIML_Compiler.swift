@@ -75,6 +75,9 @@ struct CIMLFinalView: View {
 
 //MARK: OverLay View
 struct Overlay: View{
+    @StateObject var vmCIML = DownloadCIMLDocument()
+    var test:Double = 1.0
+    
     @State var finalTextList:[CIMLText] = []
     @State var finalTextFieldList:[CIMLTextField] = []
     @State var finalButtonList:[CIMLButton] = []
@@ -82,6 +85,7 @@ struct Overlay: View{
     var cordinates:Int
     
     var body: some View{
+        
         ZStack {
             ForEach(finalTextList) { list in
                 if cordinates == list.location {
@@ -114,16 +118,17 @@ struct Overlay: View{
             }
         }
         .onAppear {
-            finalTextList.append(CIMLText(text: "Exit",font: .title, location: 126))
-            finalTextList.append(CIMLText(text: "This is a Test Form",font: .largeTitle,frame: [300,50], location: 5))
-            finalTextFieldList.append(CIMLTextField(text: "enter text",textField: "",foreGroundColor: .black, location: 32))
-            finalsysImageList.append(CIMLSYSImage(name: "gear",padding: 0, location: 90))
-            finalButtonList.append(CIMLButton(text: "gear",isIcon: true,font: .title, backgroundColor: .clear, location: 50))
+            finalTextList.append(CIMLText(text: "Exit",font: .title, frame: [100,50], location: 119))
+                finalTextList.append(CIMLText(text: String("This is a header" ?? "no name"),font: .largeTitle,frame: [300,50], location: 5))
+                finalTextFieldList.append(CIMLTextField(text: "enter text",textField: "",foreGroundColor: .black, location: 32))
+                finalsysImageList.append(CIMLSYSImage(name: "clipboard",padding: 0, location: 90))
+                finalButtonList.append(CIMLButton(text: "gear",isIcon: true,font: .title, location: 1))
             
             print("total finalTextList: ",finalTextList.count)
             print("total TextField: ",finalTextFieldList.count)
             print("total finalsysImageList: ",finalsysImageList.count)
             print("total finalButtonList: ",finalButtonList.count)
+            print("total CIML Data from internet: \(vmCIML.ciml.count)")
         }
     }
         func buildObjects(){}
@@ -233,7 +238,7 @@ struct BUTTONS:View{
                     Image(systemName: text)
                         .foregroundColor(foreGroundColor)
                         .frame(width: frame[0], height: frame[1], alignment: alignment)
-                        .background(backgroundColor)
+                        .background(isIcon ? .clear : backgroundColor)
                         .shadow(radius: shadow)
                         .padding(padding)
                 } else{
