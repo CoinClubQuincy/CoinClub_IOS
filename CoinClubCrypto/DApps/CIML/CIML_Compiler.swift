@@ -24,7 +24,7 @@ struct CIMLFinalView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 5)
-                .frame(height: 700)
+                .frame(height: 690)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(.yellow)
                 .onAppear{

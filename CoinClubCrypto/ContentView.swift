@@ -59,7 +59,7 @@ struct ContentView: View {
 //    }
     
     
-    @State var selectTab:Int = 2
+    @State var selectTab:Int = 0
     @State var total:Int = 12345
     @State var selectOmniDex:Bool = false
     @State var searchContacts:String = ""
